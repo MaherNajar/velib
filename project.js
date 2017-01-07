@@ -24,7 +24,7 @@ function initMap() {
 
        ajaxGet(url, function (reponse) {
 
- // La variable data stoque la réponse traduite des données brutes
+ // La variable data stocke la réponse traduite des données brutes
 
         var data = JSON.parse(reponse); 
 
