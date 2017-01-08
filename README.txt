@@ -1,5 +1,3 @@
-Présentation du projet :
-
 Application web simulant la location de vélos (vélib') dans Paris.
 
 - Développement en JavaScript/Jquery
