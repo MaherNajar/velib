@@ -1,4 +1,5 @@
 Présentation du projet :
+
 - Application simulant la réservation de vélos (Velib') dans Paris
 - Carte interactive utilisant l'API GoogleMaps en intéraction avec l'API OpenData de Paris
 - Développement en JavaScript/Jquery
