@@ -21,12 +21,18 @@ html, body { height: 100%; margin: 0; padding: 0; font-family: 'Merienda', cursi
   src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
-#number 
+#number
 {
-	width: 455px;
-	margin-left: 110px;
-
+  width: auto;
+  margin: auto; 
 }
+
+::-webkit-input-placeholder { text-align:center; }
+::-moz-placeholder { text-align:center; } /* firefox 19+ */
+:-ms-input-placeholder { text-align:center; } /* ie */
+input:-moz-placeholder { text-align:center; }
+
+
 
 #status 
 {
