@@ -1,5 +1,5 @@
 	
-	/* définit une fonction qui teste la saisie de l'input avec une epression régulière 
+	/* définit une fonction qui teste la saisie de l'input avec une expression régulière 
 		et affiche le nombre de marqueurs correspondant à la saisie si tout est ok */
 
 	$('#number').keyup(function() {
