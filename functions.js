@@ -2,6 +2,8 @@
 	/* teste la saisie de l'input avec une expression régulière 
 	   et affiche le nombre de marqueurs correspondant à la saisie si tout est ok */
 
+	var number = $('#number');
+
 	$('#number').keyup(function() {
 		var input = $(this).val(); 
 		var regex = new RegExp("[0-9]");
