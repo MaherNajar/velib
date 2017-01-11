@@ -1,10 +1,5 @@
-// définit l'url de la requète avec 20 marqueurs comme paramètre par défaut (rows=20)
+// URL par défault de la requète avec 20 marqueurs comme paramètre (rows=20)
 var url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset=stations-velib-disponibilites-en-temps-reel&rows=20&facet=banking&facet=bonus&facet=status&facet=contract_name';
-
-// Stocke dans une variable le champ input
-var number = $('#number');
-
-
 
 function initMap() {
 
