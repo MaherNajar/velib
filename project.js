@@ -5,7 +5,7 @@ var url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset=stations-ve
 function initMap() {
 
 	// focus sur l'input
-	number.focus();
+	     number.focus();
 
 	// initialise la carte
 	  var map = new google.maps.Map(document.getElementById('map'), {
