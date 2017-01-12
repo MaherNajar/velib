@@ -79,17 +79,14 @@ function initMap() {
 			// Affiche l'heure et la date à laquelle les données ont été mis à jour avec une modification
 			 		var time = data.records[i].fields.last_update.substr(11,8);
 			 		var date = data.records[i].fields.last_update.substr(0,10);
-			 		
 			 		update.append(date + ' à ' + time);
 
 			// Affiche l'addresse de la sation ect...
-
 			 		address.append(data.records[i].fields.address);
 			 		stands.append(data.records[i].fields.bike_stands);
 			 		bikes.append(data.records[i].fields.available_bikes);
 			 		//latitude.append(data.records[i].fields.position[0]);
 			 		//longitude.append(data.records[i].fields.position[1]);
-
 
 			// Redonne le focus à l'input
 			 		number.focus();
@@ -101,24 +98,3 @@ function initMap() {
 	});
 
 };
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-	
-
-
-
-
-	
-  
