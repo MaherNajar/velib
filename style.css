@@ -48,3 +48,14 @@ input:-moz-placeholder { text-align:center; }
   display: none;
   margin-left: 20px;
 }
+
+#nameStation
+{
+  visibility: hidden;
+}
+
+#valider
+{
+  float: right;
+}
+
