@@ -12,11 +12,11 @@
 
 <body>
 
-  		  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="map"></div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="map"></div>
 
- 		    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="display">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="display">
               <p><h2>Détails de la station</h2></p></br>
-              <p id="status"></p>
+              <p><span id="status"></span><button id="book" data-toggle="modal" data-backdrop="false"   href="#formulaire" class="btn btn-primary">Réserver</button></p>
               <p><span class="details">Nom de la station</span> : <span id="name"></span></p>
               <p><span class="details">Adresse station</span> : <span id="address"></span></p>
               <p><span class="details">Places disponibles</span> : <span id="stands"></span></p>
@@ -25,10 +25,39 @@
              <p><span class= 'details'>Position (longitude)</span> : <span id="longitude"></span></p>-->
              <p><span class="details">Mis à jour le</span> : <span id="update"></span></p>
              <p><span class="details">Nombres de stations</span> : <span><input type="text" class="form-control input-xs" placeholder="(1231 max)" id="number"></span></p>
+
         </div>
+           
+      <div class="modal fade" id="formulaire">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">x</button>
+              <h4 class="modal-title">Vos infos :</h4>
+            </div>
+            <div class="modal-body">
+              <form action="booking.php">
+                <div class="form-group">
+                  <label for="nom">Nom</label>
+                  <input type="text" class="form-control" name ="nom" id="nom" placeholder="Votre nom">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email">
+                </div>
+                <button type="submit" class="btn btn-default">Réserver</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-info" data-dismiss="modal">Annuler</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
-     		<div class="col-lg-12">
-                   <canvas width="300" height="150" id="myCanvas"></canvas> 
+        <div class="col-lg-12">
+               <div id="html">   
         </div>
     
 </body>
@@ -39,6 +68,23 @@
     <script src="functions.js"></script>
     <script async defer
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7fqhPuLV6HNyLtwQnKB8WMQyuAbME45g&callback=initMap">
+    </script>
+    <script type="text/javascript">
+     $(function(){
+        $("form").submit(function(e) {
+          e.preventDefault();
+          var $form = $(this);
+          $.post($form.attr("action"), $form.serialize())
+          .done(function(data) {
+            $("#html").html(data).focus();
+            $("#formulaire").modal("hide"); 
+
+          })
+          .fail(function() {
+            alert("ça marche pas...");
+          });
+        });
+      });
     </script>
 
 </html>

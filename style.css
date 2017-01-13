@@ -1,29 +1,25 @@
 
-[class*="col-"], footer
-{
+[class*="col-"], footer {
+  
   border: 2px solid black;
   border-radius: 6px;
   line-height: 40px;
   text-align: center;
 }
-
-html, body
-{ 
-  height: 100%;
-  margin: 0; 
-  padding: 0; 
-  font-family: 'Merienda', cursive; 
-}
-
- #map, #display 
-{ 
-  height: 100%;
-}
-
+html, body { height: 100%; margin: 0; padding: 0; font-family: 'Merienda', cursive; }
+ #map { height: 100%;}
+ #display { height: 100%;}
+ 
  .details
-{
+  {
   text-decoration: underline;
-}	
+ }  
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('fonts/glyphicons-halflings-regular.eot');
+  src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
 
 #number
 {
@@ -36,6 +32,7 @@ html, body
 :-ms-input-placeholder { text-align:center; } /* ie */
 input:-moz-placeholder { text-align:center; }
 
+
 #status 
 {
   font-size: x-large;
@@ -44,4 +41,10 @@ input:-moz-placeholder { text-align:center; }
 #stands, #bikes
 {
   font-size: large;
+}
+
+#book
+{
+  display: none;
+  margin-left: 20px;
 }

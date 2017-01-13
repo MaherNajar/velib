@@ -1,19 +1,27 @@
 	
+	$(function() {
+
+
 	/* teste la saisie de l'input avec une expression régulière 
 	   et affiche le nombre de marqueurs correspondant à la saisie si tout est ok */
 
 	var number = $('#number');
 
-	$('#number').keyup(function() {
+		number.keyup(function() {
+
 		var input = $(this).val(); 
 		var regex = new RegExp("[0-9]");
 		if (regex.test(input) && input <= 1231) {
 
 			url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset=stations-velib-disponibilites-en-temps-reel&rows=' + input + '&facet=banking&facet=bonus&facet=status&facet=contract_name';
-			initMap();
+			initMap();		
+
 		} else {
 			$(this).val(input.substr(0, input.length-1));
 
 		}
 
 	});
+
+		
+});

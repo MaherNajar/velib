@@ -1,6 +1,7 @@
 // URL par défault de la requète avec 20 marqueurs (rows=20)
 var url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset=stations-velib-disponibilites-en-temps-reel&rows=20&facet=banking&facet=bonus&facet=status&facet=contract_name';
 
+var book = $('#book');
 
 function initMap() {
 
@@ -70,9 +71,11 @@ function initMap() {
 			 		{
 			 			case 'OPEN':
 			 			state.html('Ouverte').css('color', 'green');
+			 			book.show();
 			 			break;
 			 			case 'CLOSED':
 			 			state.html('Fermée').css('color', 'red');
+			 			book.hide();
 			 			break;
 			 		}
 			
