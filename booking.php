@@ -3,9 +3,11 @@
 $nom = $_POST['nom'];
 $email = $_POST['email'];
 $station = $_POST['station'];
+$date = date("d-m-Y");
+$heure = date("H:i");
 
 $filename = 'booking.txt';
-$line = $nom . " - " . $email . " a réservé 1 vélo à la station " . $station . "\n";
+$line = $nom . " - " . $email . " a réservé 1 vélo à la station " . $station . " à " . $heure . " le " . $date . " \n";
 
 // Assurons nous que le fichier est accessible en écriture
 if (is_writable($filename)) {
