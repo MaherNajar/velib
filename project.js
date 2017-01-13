@@ -59,7 +59,7 @@ function initMap() {
 			 		update.html('');
 
 			// Affiche le 'title' du marker avec une modification
-					name.append(this.getTitle().substr(8, this.getTitle().length-1));
+					name.html(this.getTitle().substr(8, this.getTitle().length-1));
 
 			// parcours les données jusqu'à trouver une correspondance pour utiliser 'i' par la suite
 			 		for (i=0; this.getTitle() != data.records[i].fields.name; i++)	
@@ -82,12 +82,12 @@ function initMap() {
 			// Affiche l'heure et la date à laquelle les données ont été mis à jour avec une modification
 			 		var time = data.records[i].fields.last_update.substr(11,8);
 			 		var date = data.records[i].fields.last_update.substr(0,10);
-			 		update.append(date + ' à ' + time);
+			 		update.html(date + ' à ' + time);
 
 			// Affiche l'addresse de la sation ect...
-			 		address.append(data.records[i].fields.address);
-			 		stands.append(data.records[i].fields.bike_stands);
-			 		bikes.append(data.records[i].fields.available_bikes);
+			 		address.html(data.records[i].fields.address);
+			 		stands.html(data.records[i].fields.bike_stands);
+			 		bikes.html(data.records[i].fields.available_bikes);
 			 		//latitude.append(data.records[i].fields.position[0]);
 			 		//longitude.append(data.records[i].fields.position[1]);
 
