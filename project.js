@@ -88,8 +88,8 @@ function initMap() {
 			 		address.html(data.records[i].fields.address);
 			 		stands.html(data.records[i].fields.bike_stands);
 			 		bikes.html(data.records[i].fields.available_bikes);
-			 		//latitude.append(data.records[i].fields.position[0]);
-			 		//longitude.append(data.records[i].fields.position[1]);
+			 		//latitude.html(data.records[i].fields.position[0]);
+			 		//longitude.html(data.records[i].fields.position[1]);
 
 			// Redonne le focus à l'input
 			 		number.focus();

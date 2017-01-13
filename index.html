@@ -16,7 +16,7 @@
 
         <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="display">
               <p><h2>Détails de la station</h2></p></br>
-              <p><span id="status"></span><button id="book" data-toggle="modal" data-backdrop="false"   href="#formulaire" class="btn btn-primary">Réserver</button></p>
+              <p><span id="status"></span><button id="book" data-toggle="modal" data-backdrop="false"   href="#modalWindow" class="btn btn-primary">Réserver</button></p>
               <p><span class="details">Nom de la station</span> : <span id="name"></span></p>
               <p><span class="details">Adresse station</span> : <span id="address"></span></p>
               <p><span class="details">Places disponibles</span> : <span id="stands"></span></p>
@@ -28,7 +28,7 @@
 
         </section>
            
-      <section class="modal fade" id="formulaire">
+      <section class="modal fade" id="modalWindow">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -72,35 +72,6 @@
     <script src="functions.js"></script>
     <script async defer
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7fqhPuLV6HNyLtwQnKB8WMQyuAbME45g&callback=initMap">
-    </script>
-    <script type="text/javascript">
-     $(function(){
-        $("form").submit(function(e) {
-          e.preventDefault();
-          var $form = $(this);
-          var $target = $('html,body'); 
-          var station = $('#name').html();
-          var nameStation = $('#nameStation');
-          nameStation.val(station);
-          $.post($form.attr("action"), $form.serialize())
-          .done(function(data) {
-            $("#footer").html(data);
-            $("#formulaire").modal("hide");
-            $target.animate({scrollTop: footer.height()}, 1000); 
-          })
-
-          .fail(function() {
-            alert('ça marche pas..');
-            var nom = $('#nom').val();
-            var email = $('#email').val();
-            var footer = $('#footer');
-
-           footer.html(nom + ' - ' + email + ' a réservé 1 vélo à la station ' + station);
-            $("#formulaire").modal("hide"); 
-            $target.animate({scrollTop: footer.height()}, 1000);
-          });
-        });
-      });
     </script>
 
 </html>

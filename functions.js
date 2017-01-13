@@ -23,5 +23,40 @@
 
 	});
 
+		/*Envoi les données du formulaire de réservation au fichier php 
+		puis traite la réponse */
+
+		 $("form").submit(function(e) {
+
+          e.preventDefault();
+
+          
+          var $target = $('html,body'); 
+          var $modalWindow = $('#modalWindow');
+          var $footer = $('#footer');
+
+          var $form = $(this);
+          var $station = $('#name').html();
+          var $nom = $('#nom').val();
+          var $email = $('#email').val();
+          var $nameStation = $('#nameStation');
+         	  $nameStation.val($station);
+
+          $.post($form.attr("action"), $form.serialize())
+
+          .done(function(data) {
+            $footer.html(data);
+            $modalWindow.modal("hide");
+            $target.animate({scrollTop: $footer.height()}, 1000); 
+          })
+
+          .fail(function() {
+            alert('ça marche pas..');
+            $footer.html($nom + ' - ' + $email + ' a réservé 1 vélo à la station ' + $station);
+            $modalWindow.modal("hide"); 
+            $target.animate({scrollTop: $footer.height()}, 1000);
+          });
+        });
+
 		
 });
