@@ -39,8 +39,13 @@
           var $station = $('#name').html();
           var $nom = $('#nom').val();
           var $email = $('#email').val();
+          var $time = $('#duration').val();
+          var $duration = $time.substr(0, 2) + ' heures et ' + $time.substr(3,5) + ' minutes';
           var $nameStation = $('#nameStation');
+          var $rentaltime = $('#rentaltime');
          	  $nameStation.val($station);
+            $rentaltime.val($duration);
+            
 
           $.post($form.attr("action"), $form.serialize())
 
@@ -52,7 +57,7 @@
 
           .fail(function() {
             alert('ça marche pas..');
-            $footer.html($nom + ' - ' + $email + ' a réservé 1 vélo à la station ' + $station);
+            $footer.html($nom + ' - ' + $email + ' a réservé 1 vélo à la station ' + $station + ' pour ' + $duration);
             $modalWindow.modal("hide"); 
             $target.animate({scrollTop: $footer.height()}, 1000);
           });

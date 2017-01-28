@@ -45,6 +45,7 @@ input:-moz-placeholder { text-align:center; }
 #stands, #bikes
 {
   font-size: large;
+  color: #0bb2f2;
 }
 
 #book
@@ -53,7 +54,7 @@ input:-moz-placeholder { text-align:center; }
   margin-left: 2%;
 }
 
-#nameStation
+#nameStation, #rentaltime
 {
   visibility: hidden;
 }

@@ -20,11 +20,11 @@
               <p><span class="details">Nom de la station :</span><span id="name"></span></p>
               <p><span class="details">Adresse station :</span><span id="address"></span></p>
               <p><span class="details">Places disponibles :</span><span id="stands"></span></p>
-              <p><span class="details">Vélos disponibles :</span><span id="bikes"></span></p>
+              <p><span class="details">Vélos disponibles :</span> <span id="bikes"></span></p>
         <!-- <p><span class="details">Position (latitude)</span> : <span id="latitude"></span></p>
              <p><span class= 'details'>Position (longitude)</span> : <span id="longitude"></span></p>-->
              <p><span class="details">Mis à jour le :</span><span id="update"></span></p>
-             <p><span class="details">Nombres de stations :</span><span><input type="text" class="form-control input-xs" placeholder="Nb stations (1231 max)" id="number"></span></p>
+             <p><span class="details">Nombres de stations :</span><span><input type="text" class="form-control input-xs" placeholder="Nb stations (1231 max)" id="number" autofocus></span></p>
 
         </section>
            
@@ -44,8 +44,12 @@
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email">
+                  <div class="form-group">
+                  <label for="duration">Durée</label>
+                  <input type="time" class="form-control" name="duration" id="duration" placeholder="Durée de location en minutes">
                 </div>
                   <input type="text" name ="station" id="nameStation">
+                  <input type="text" name ="rentaltime" id="rentaltime">
                <div class="form-group">
                 <label class="control-label" for="valider"></label>
                   <button id="valider" name="valider" class="btn btn-success">Réserver</button>

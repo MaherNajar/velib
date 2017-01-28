@@ -5,8 +5,6 @@ var book = $('#book');
 
 function initMap() {
 
-	// focus sur l'input
-	     number.focus();
 
 	// initialise la carte
 	  var map = new google.maps.Map(document.getElementById('map'), {
@@ -96,9 +94,6 @@ function initMap() {
 			 		bikes.html(data.records[i].fields.available_bikes).hide().fadeIn('slow');
 			 		//latitude.html(data.records[i].fields.position[0]);
 			 		//longitude.html(data.records[i].fields.position[1]);
-
-			// Redonne le focus à l'input
-			 		number.focus();
 			
 			  	
 			});	
