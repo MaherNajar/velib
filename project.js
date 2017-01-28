@@ -39,7 +39,9 @@ function initMap() {
 		marker.addListener('click', function () {
 
 			// Affiche les libellés
+					var h2 = $('h2');
 					var details = $('.details');
+						h2.show();
 						details.show();
 
 			// Sélectionne les éléments html
