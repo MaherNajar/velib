@@ -38,6 +38,10 @@ function initMap() {
 	   // appelle la méthode d'écoute de l'objet marker
 		marker.addListener('click', function () {
 
+			// Affiche les libellés
+					var details = $('.details');
+						details.show();
+
 			// Sélectionne les éléments html
 			 		var name = $('#name');
 			 		var address = $('#address');
@@ -58,8 +62,8 @@ function initMap() {
 			 		state.html('');
 			 		update.html('');
 
-			// Affiche le 'title' du marker avec une modification
-					name.html(this.getTitle().substr(8, this.getTitle().length-1));
+			// Affiche le 'title' du marker avec une modification et un effet
+					name.html(this.getTitle().substr(8, this.getTitle().length-1)).hide().fadeIn('slow');
 
 			// parcours les données jusqu'à trouver une correspondance pour utiliser 'i' par la suite
 			 		for (i=0; this.getTitle() != data.records[i].fields.name; i++)	
@@ -79,15 +83,15 @@ function initMap() {
 			 			break;
 			 		}
 			
-			// Affiche l'heure et la date à laquelle les données ont été mis à jour avec une modification
+			// Affiche l'heure et la date à laquelle les données ont été mis à jour avec une modification et un effet
 			 		var time = data.records[i].fields.last_update.substr(11,8);
 			 		var date = data.records[i].fields.last_update.substr(0,10);
-			 		update.html(date + ' à ' + time);
+			 		update.html(date + ' à ' + time).hide().fadeIn('slow');
 
 			// Affiche l'addresse de la sation ect...
-			 		address.html(data.records[i].fields.address);
-			 		stands.html(data.records[i].fields.bike_stands);
-			 		bikes.html(data.records[i].fields.available_bikes);
+			 		address.html(data.records[i].fields.address).hide().fadeIn('slow');
+			 		stands.html(data.records[i].fields.bike_stands).hide().fadeIn('slow');
+			 		bikes.html(data.records[i].fields.available_bikes).hide().fadeIn('slow');
 			 		//latitude.html(data.records[i].fields.position[0]);
 			 		//longitude.html(data.records[i].fields.position[1]);
 
