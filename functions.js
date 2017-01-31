@@ -66,8 +66,10 @@
             $target.animate({scrollTop: $footer.height()}, 1000);
           });
         });
+      
+});
 
-      // Affiche les variables de sessions 
+   // Affiche les variables de sessions 
         function session () {
 
       var $target = $('html,body'); 
@@ -83,5 +85,3 @@
         if ($footer.html() == 'null - null a reservé 1 vélo pour null à la station null')
           $footer.html('');
       };
-      
-});
