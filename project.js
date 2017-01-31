@@ -3,9 +3,11 @@ var url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset=stations-ve
 
 var book = $('#book');
 
+
 function initMap() {
 
-
+	session();
+	
 	// initialise la carte
 	  var map = new google.maps.Map(document.getElementById('map'), {
 	    zoom: 12,

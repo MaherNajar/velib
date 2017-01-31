@@ -45,6 +45,10 @@
           var $rentaltime = $('#rentaltime');
          	  $nameStation.val($station);
             $rentaltime.val($duration);
+            sessionStorage.setItem("nom", $nom);
+            sessionStorage.setItem("email", $email);
+            sessionStorage.setItem("duree", $duration);
+            sessionStorage.setItem("station", $station);
             
 
           $.post($form.attr("action"), $form.serialize())
@@ -57,11 +61,27 @@
 
           .fail(function() {
             alert('ça marche pas..');
-            $footer.html($nom + ' - ' + $email + ' a réservé 1 vélo à la station ' + $station + ' pour ' + $duration);
+            $footer.html($nom + ' - ' + $email + ' a réservé 1 vélo pour ' + $duration + ' à la station ' + $station);
             $modalWindow.modal("hide"); 
             $target.animate({scrollTop: $footer.height()}, 1000);
           });
         });
 
-		
+      // Affiche les variables de sessions 
+        function session () {
+
+      var $target = $('html,body'); 
+      var $footer = $('#footer');
+      var nom = sessionStorage.getItem('nom');
+      var email = sessionStorage.getItem('email');
+      var duree = sessionStorage.getItem('duree');
+      var station = sessionStorage.getItem('station');
+        
+        $footer.html(nom + ' - ' + email + ' a reservé 1 vélo pour ' + duree + ' à la station ' + station);
+        $target.animate({scrollTop: $footer.height()}, 1000);
+
+        if ($footer.html() == 'null - null a reservé 1 vélo pour null à la station null')
+          $footer.html('');
+      };
+      
 });
