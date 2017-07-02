@@ -1,4 +1,4 @@
-Développement d’une application Web permettant de consulter l’état des stations Vélib' en temps réel et de louer fictivement un vélo en remplissant un formulaire. 
+Application Web permettant de consulter l’état des stations Vélib' en temps réel et de louer fictivement un vélo en remplissant un formulaire. 
 
 Réalisations :
 
