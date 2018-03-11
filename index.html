@@ -1,81 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Utiliser des API</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+  <title>Utiliser des API</title>
+  <style>
+    #map {
+      height: 600px;
+    }
 
+    #display {
+      height: 600px;
+    }
+
+
+    [class*="col-"],
+    footer {
+
+      border: 2px solid black;
+      border-radius: 6px;
+      line-height: 40px;
+      text-align: center;
+    }
+
+    #valider {
+      float: right;
+    }
+
+    .details {
+      float: left;
+      margin-left: 5px;
+      display: none;
+    }
+
+    #capacity {
+      margin-left: 7%;
+    }
+
+    #recordtime {
+      margin-left: 4%;
+    }
+
+    #book {
+      margin-left: 18%;
+    }
+
+    h3 {
+      margin-left: 18%;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
-
-        <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="map"></section>
-
-        <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center" id="display">
-              <p><h2>Détails de la station</h2></p><br>
-              <p><span id="status"></span><button id="book" data-toggle="modal" data-backdrop="false"   href="#modalWindow" class="btn btn-primary">Réserver  &#x1f6b2;</button></p><br>
-              <p><span class="details">Nom de la station :</span><span id="name"></span></p>
-              <p><span class="details">Adresse station :</span><span id="address"></span></p>
-              <p><span class="details">Places disponibles :</span><span id="stands"></span></p>
-              <p><span class="details">Vélos disponibles :</span> <span id="bikes"></span></p>
-        <!-- <p><span class="details">Position (latitude)</span> : <span id="latitude"></span></p>
-             <p><span class= 'details'>Position (longitude)</span> : <span id="longitude"></span></p>-->
-             <p><span class="details">Mis à jour le :</span><span id="update"></span></p>
-             <p><span class="details">Nombres de stations :</span><span><input type="text" class="form-control input-xs" placeholder="Nb stations (1231 max)" id="number" autofocus></span></p>
-
-        </section>
-           
-      <section class="modal fade" id="modalWindow">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">x</button>
-              <h4 class="modal-title">Vos infos :</h4>
+  <div>
+    <div class="row">
+      <div id="map" class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>
+      <div id="display" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+        <h3>Info station</h3>
+        <p>
+          <span class="details">Nom de la station :</span>
+          <span id="name"></span>
+        </p>
+        <p>
+          <span class="details">Vélos disponibles :</span>
+          <span id="numbikesavailable"></span>
+        </p>
+        <p>
+          <span class="details">Capacité :</span>
+          <span id="capacity"></span>
+        </p>
+        <p>
+            <span class="details">Mis à jour le : </span>
+            <span id="recordtime"></span>
+          </p>
+        <button disabled id="book" data-toggle="modal" data-backdrop="false" href="#modalWindow" class="btn btn-primary">Réserver &#x1f6b2;</button>
+      </div>
+    </div>
+  </div>
+  <section class="modal fade" id="modalWindow">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">x</button>
+          <h4 class="modal-title">Vos infos :</h4>
+        </div>
+        <div class="modal-body">
+          <form action="booking.php">
+            <div class="form-group">
+              <label for="nom">Nom et prénom</label>
+              <input type="text" class="form-control" name="nom" id="nom" placeholder="Votre nom et prénom" required>
             </div>
-            <div class="modal-body">
-              <form action="booking.php">
-                <div class="form-group">
-                  <label for="nom">Nom et prénom</label>
-                  <input type="text" class="form-control" name ="nom" id="nom" placeholder="Votre nom et prénom" required>
-                </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email" required>
-                  <div class="form-group">
-                  <label for="duration">Durée</label>
-                  <input type="time" class="form-control" name="duration" id="duration" placeholder="Durée de location en minutes" required>
-                </div>
-                  <input type="text" name ="station" id="nameStation">
-                  <input type="text" name ="rentaltime" id="rentaltime">
-               <div class="form-group">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email" required>
+              <div class="form-group">
+                <label for="duration">Durée</label>
+                <input type="time" class="form-control" name="duration" id="duration" placeholder="Durée de location en minutes" required>
+              </div>
+              <input type="text" name="station" id="nameStation" hidden>
+              <input type="text" name="rentaltime" id="rentaltime" hidden>
+              <div class="form-group">
                 <label class="control-label" for="valider"></label>
-                  <button id="valider" name="valider" class="btn btn-success">Réserver</button>
-               </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-info" data-dismiss="modal">Annuler</button>
-            </div>
+                <button id="valider" name="valider" class="btn btn-success">Réserver</button>
+              </div>
+          </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-info" data-dismiss="modal">Annuler</button>
           </div>
         </div>
-      </section>
-        
-      <footer class="col-lg-12">
-          <div id="footer">  
-      </footer>
-        
-    
+      </div>
+  </section>
+
+  <footer class="col-lg-12">
+    <div id="footer">
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="project.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7fqhPuLV6HNyLtwQnKB8WMQyuAbME45g&callback=initMap">
+  </script>
 </body>
-    <script src="ajax.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="project.js"></script>
-    <script src="functions.js"></script>
-    <script async defer
-       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7fqhPuLV6HNyLtwQnKB8WMQyuAbME45g&callback=initMap">
-    </script>
 
 </html>
