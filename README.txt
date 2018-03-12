@@ -1,4 +1,4 @@
-Projet web utilisant l'API de Vélib sur la carte de Google Maps
+Projet javascript utilisant l'API de Vélib sur la carte de Google Maps
 
 -	Développement d’un Template intégrant la carte de Google Maps 
 -	Utilisation des jeux de données d’Open Data Paris sur la carte.
