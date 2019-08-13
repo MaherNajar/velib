@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/velib/precache-manifest.e203f64c2423fab5280fd942744ae3ad.js"
+  "/velib/precache-manifest.08160da10f032d36198f1c2c9a80031b.js"
 );
 
 self.addEventListener('message', (event) => {
