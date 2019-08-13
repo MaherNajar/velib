@@ -1,0 +1,15 @@
+.map {
+  height: 607px;
+}
+
+.table {
+  margin-top: 23px;
+}
+th {
+  width: 300px;
+}
+
+th span,
+td span {
+  float: left;
+}
