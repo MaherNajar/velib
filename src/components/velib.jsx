@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker } from "google-maps-react";
 import { getStations } from "../services/velib-service";
-import { debounce } from "lodash";
+// import { debounce } from "lodash";
 import TableInfo from "./tableInfo";
 import Slider from "./slider";
 import SvgVelibLogo from "../icons/VelibLogo";
 
 export default class Velib extends Component {
   state = {
-    maxMarkers: 1360,
+    maxMarkers: null,
     rangeMarkers: 100,
     markers: [],
     filtredMarkers: [],
     showingInfoWindow: false,
     activeMarker: null,
     selectedPlace: { position: { lat: 48.8724200631, lng: 2.34839523628 } }
+  };
+
+  countStyle = {
+    fontSize: "30px"
   };
 
   async componentDidMount() {
@@ -62,9 +66,9 @@ export default class Velib extends Component {
     });
   };
 
-  onChangeMarkersRange = rangeMarkers => {
-    this.setState({ rangeMarkers });
-    this.getFiltredMarkers();
+  onChangeMarkersRange = async rangeMarkers => {
+    await this.setState({ rangeMarkers });
+    await this.getFiltredMarkers();
   };
 
   getFiltredMarkers = () => {
@@ -139,17 +143,10 @@ export default class Velib extends Component {
           <div className="row">
             <div className="col-md-12 mt-4">
               <h4 className="text-nowrap">
-                <span
-                  style={{
-                    fontSize: "30px",
-                    marginTop: "-30px"
-                  }}
-                >
-                  {rangeMarkers}
-                </span>{" "}
-                marqueurs de stations{" "}
-                <SvgVelibLogo width="70px" height="70px" /> vont s'afficher sur
-                la carte, cliquez dessus !
+                <span style={this.countStyle}>{rangeMarkers}</span> marqueurs de
+                stations <SvgVelibLogo width="70px" height="70px" /> sur{" "}
+                <span style={this.countStyle}>{maxMarkers}</span> vont
+                s'afficher sur la carte, cliquez dessus !
               </h4>
               <Slider
                 onChange={this.onChangeMarkersRange}
