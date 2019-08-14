@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "620dd1c0615f08ef03aa30fbf83e088f",
+    "revision": "7aa0069bfa89cc6bafd16f7b22b968cb",
     "url": "/velib/index.html"
   },
   {
-    "revision": "2cade1c1f378630595b8",
+    "revision": "478329d67ad17b953c97",
     "url": "/velib/static/css/2.266e55a5.chunk.css"
   },
   {
-    "revision": "c7389d20141b7dc6d459",
+    "revision": "4d26b12ecc55413929c8",
     "url": "/velib/static/css/main.b35dedef.chunk.css"
   },
   {
-    "revision": "2cade1c1f378630595b8",
-    "url": "/velib/static/js/2.788e6620.chunk.js"
+    "revision": "478329d67ad17b953c97",
+    "url": "/velib/static/js/2.1304a74a.chunk.js"
   },
   {
-    "revision": "c7389d20141b7dc6d459",
-    "url": "/velib/static/js/main.01b5a9ef.chunk.js"
+    "revision": "4d26b12ecc55413929c8",
+    "url": "/velib/static/js/main.f30c33f1.chunk.js"
   },
   {
     "revision": "a7e3eb621309d52477cb",
