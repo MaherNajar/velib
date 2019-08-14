@@ -1,36 +1,31 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker } from "google-maps-react";
-import axios from "axios";
+import { getStations } from "../services/velib-service";
 import { debounce } from "lodash";
 import TableInfo from "./tableInfo";
 import Slider from "./slider";
+import SvgVelibLogo from "../icons/VelibLogo";
 
 export default class Velib extends Component {
   state = {
-    maxMarkers: null,
+    maxMarkers: 1360,
     rangeMarkers: 100,
     markers: [],
+    filtredMarkers: [],
     showingInfoWindow: false,
     activeMarker: null,
     selectedPlace: { position: { lat: 48.8724200631, lng: 2.34839523628 } }
   };
 
-  componentDidMount() {
-    this.getMarkers();
+  async componentDidMount() {
+    await this.getData();
+    await this.getFiltredMarkers();
   }
 
-  getUrl = rows => {
-    return (
-      "https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=" +
-      rows
-    );
-  };
-
-  getMarkers = debounce(async () => {
-    const url = this.getUrl(this.state.rangeMarkers);
-    const { data } = await axios.get(url);
-
+  getData = async () => {
+    const { data } = await getStations();
     const maxMarkers = data.nhits;
+
     const markers = [];
 
     data.records.forEach(e => {
@@ -65,11 +60,17 @@ export default class Velib extends Component {
 
       this.setState({ markers, maxMarkers });
     });
-  }, 1000);
+  };
 
   onChangeMarkersRange = rangeMarkers => {
     this.setState({ rangeMarkers });
-    this.getMarkers(rangeMarkers);
+    this.getFiltredMarkers();
+  };
+
+  getFiltredMarkers = () => {
+    const markers = [...this.state.markers];
+    const filtredMarkers = markers.slice(0, this.state.rangeMarkers);
+    this.setState({ filtredMarkers });
   };
 
   onMarkerClick = (props, marker, e) => {
@@ -96,7 +97,7 @@ export default class Velib extends Component {
 
   render() {
     const {
-      markers,
+      filtredMarkers,
       maxMarkers,
       activeMarker,
       selectedPlace,
@@ -106,7 +107,7 @@ export default class Velib extends Component {
 
     return (
       <div className="row">
-        <div className="map col-md-4">
+        <div className="map col-md-4 col-sm-6 col-xs-12">
           <Map
             onClick={this.onMapClicked}
             google={this.props.google}
@@ -116,7 +117,7 @@ export default class Velib extends Component {
               lng: selectedPlace.position.lng
             }}
           >
-            {markers.map(marker => (
+            {filtredMarkers.map(marker => (
               <Marker
                 uid={marker.codeStation}
                 key={marker.codeStation}
@@ -136,22 +137,20 @@ export default class Velib extends Component {
         </div>
         <div id="infos" className="col text-center">
           <div className="row">
-            <div className="col-md-12">
-              <h3>Vélib' - Disponibilité temps réel</h3>
-            </div>
             <div className="col-md-12 mt-4">
-              <p className="text-nowrap mb-4">
+              <h4 className="text-nowrap">
                 <span
                   style={{
-                    fontSize: "20px",
+                    fontSize: "30px",
                     marginTop: "-30px"
                   }}
                 >
                   {rangeMarkers}
                 </span>{" "}
-                marqueurs de stations <i>efe</i> vont s'afficher sur la carte,
-                cliquez dessus.
-              </p>
+                marqueurs de stations{" "}
+                <SvgVelibLogo width="70px" height="70px" /> vont s'afficher sur
+                la carte, cliquez dessus !
+              </h4>
               <Slider
                 onChange={this.onChangeMarkersRange}
                 maxMarkers={maxMarkers}

@@ -1,7 +1,6 @@
 import React from "react";
 
 const TableInfo = ({ activeMarker: a }) => {
-  if (!a) return null;
   return (
     <table className="table table-bordered">
       <tbody>
