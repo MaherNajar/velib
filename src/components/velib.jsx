@@ -83,7 +83,6 @@ export default class Velib extends Component {
     Object.assign(marker, markerSource);
     this.setState({
       activeMarker: marker,
-      activePosition: marker.position,
       selectedPlace: props,
       showingInfoWindow: true
     });
