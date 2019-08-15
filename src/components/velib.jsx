@@ -160,7 +160,7 @@ export default class Velib extends Component {
                 <TableInfo activeMarker={activeMarker} />
               ) : (
                 <h4 style={{ marginTop: "200px" }}>
-                  Clickez sur un marqueur pour afficher les disponibilités en
+                  Cliquez sur un marqueur pour afficher les disponibilités en
                   temps réel !
                 </h4>
               )}
