@@ -3,7 +3,8 @@ import { Map, InfoWindow, Marker } from "google-maps-react";
 import { getStations } from "../services/velib-service";
 import TableInfo from "./tableInfo";
 import Slider from "./slider";
-import SvgVelibLogo from "../icons/VelibLogo";
+import VelibLogo from "../icons/VelibLogo";
+import LoadingSpinner from "../icons/LoadingSpinner";
 
 export default class Velib extends Component {
   state = {
@@ -144,8 +145,11 @@ export default class Velib extends Component {
           <div className="row">
             <div className="col-md-12 mt-4">
               <h4>
+                {filtredMarkers.length === 0 ? (
+                  <LoadingSpinner style={{ marginRight: "5px" }} />
+                ) : null}
                 <span style={this.countStyle}>{rangeMarkers}</span> marqueurs de
-                stations <SvgVelibLogo width="70px" height="70px" /> sur{" "}
+                stations <VelibLogo width="70px" height="70px" /> sur{" "}
                 <span style={this.countStyle}>{maxMarkers}</span> vont
                 s'afficher sur la carte, faites glisser le vélo !
               </h4>
