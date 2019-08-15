@@ -4,7 +4,6 @@ import { getStations } from "../services/velib-service";
 import TableInfo from "./tableInfo";
 import Slider from "./slider";
 import SvgVelibLogo from "../icons/VelibLogo";
-import greenDot from "../icons/green-dot.png";
 
 export default class Velib extends Component {
   state = {
@@ -132,12 +131,6 @@ export default class Velib extends Component {
                 position={marker.position}
                 onClick={this.onMarkerClick}
                 opacity={0.3}
-                icon={{
-                  url: greenDot,
-                  size: google.maps.Size(128, 128),
-                  origin: google.maps.Point(0, 0),
-                  anchor: google.maps.Point(0, 32)
-                }}
               />
             ))}
 
@@ -168,8 +161,8 @@ export default class Velib extends Component {
                 <TableInfo activeMarker={activeMarker} />
               ) : (
                 <h4 style={{ marginTop: "200px" }}>
-                  Clickez sur un marqueur pour afficher les les disponibilités
-                  en temps réel !
+                  Clickez sur un marqueur pour afficher les disponibilités en
+                  temps réel !
                 </h4>
               )}
             </div>
