@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker } from "google-maps-react";
 import { getStations } from "../services/velib-service";
-// import { debounce } from "lodash";
 import TableInfo from "./tableInfo";
 import Slider from "./slider";
 import SvgVelibLogo from "../icons/VelibLogo";
+import greenDot from "../icons/green-dot.png";
 
 export default class Velib extends Component {
   state = {
     maxMarkers: null,
-    rangeMarkers: 100,
+    rangeMarkers: 480,
     markers: [],
     filtredMarkers: [],
     showingInfoWindow: false,
@@ -109,12 +109,14 @@ export default class Velib extends Component {
       rangeMarkers
     } = this.state;
 
+    const { google } = this.props;
+
     return (
       <div className="row">
         <div className="map col-md-4 col-sm-6 col-xs-12">
           <Map
             onClick={this.onMapClicked}
-            google={this.props.google}
+            google={google}
             zoom={12}
             initialCenter={{
               lat: selectedPlace.position.lat,
@@ -126,9 +128,16 @@ export default class Velib extends Component {
                 uid={marker.codeStation}
                 key={marker.codeStation}
                 name={marker.nomStation}
+                title={marker.nomStation}
                 position={marker.position}
                 onClick={this.onMarkerClick}
                 opacity={0.3}
+                icon={{
+                  url: greenDot,
+                  size: google.maps.Size(128, 128),
+                  origin: google.maps.Point(0, 0),
+                  anchor: google.maps.Point(0, 32)
+                }}
               />
             ))}
 
@@ -142,21 +151,27 @@ export default class Velib extends Component {
         <div id="infos" className="col text-center">
           <div className="row">
             <div className="col-md-12 mt-4">
-              <h4 className="text-nowrap">
+              <h4>
                 <span style={this.countStyle}>{rangeMarkers}</span> marqueurs de
                 stations <SvgVelibLogo width="70px" height="70px" /> sur{" "}
                 <span style={this.countStyle}>{maxMarkers}</span> vont
-                s'afficher sur la carte, cliquez dessus !
+                s'afficher sur la carte, faites glisser le vélo !
               </h4>
               <Slider
                 onChange={this.onChangeMarkersRange}
                 maxMarkers={maxMarkers}
                 value={rangeMarkers}
-                color="red"
               />
             </div>
             <div className="col tableInfos">
-              {activeMarker ? <TableInfo activeMarker={activeMarker} /> : null}
+              {activeMarker ? (
+                <TableInfo activeMarker={activeMarker} />
+              ) : (
+                <h4 style={{ marginTop: "200px" }}>
+                  Clickez sur un marqueur pour afficher les les disponibilités
+                  en temps réel !
+                </h4>
+              )}
             </div>
           </div>
         </div>
