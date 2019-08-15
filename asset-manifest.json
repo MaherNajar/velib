@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/velib/static/css/main.b35dedef.chunk.css",
-    "main.js": "/velib/static/js/main.f284c2ce.chunk.js",
-    "main.js.map": "/velib/static/js/main.f284c2ce.chunk.js.map",
+    "main.js": "/velib/static/js/main.0dce9e93.chunk.js",
+    "main.js.map": "/velib/static/js/main.0dce9e93.chunk.js.map",
     "runtime~main.js": "/velib/static/js/runtime~main.7a4e9bb8.js",
     "runtime~main.js.map": "/velib/static/js/runtime~main.7a4e9bb8.js.map",
     "static/css/2.266e55a5.chunk.css": "/velib/static/css/2.266e55a5.chunk.css",
     "static/js/2.c58979f0.chunk.js": "/velib/static/js/2.c58979f0.chunk.js",
     "static/js/2.c58979f0.chunk.js.map": "/velib/static/js/2.c58979f0.chunk.js.map",
     "index.html": "/velib/index.html",
-    "precache-manifest.cfdf6a13f9361f1a2273ae6c6dc2953a.js": "/velib/precache-manifest.cfdf6a13f9361f1a2273ae6c6dc2953a.js",
+    "precache-manifest.f0d7b07abc51b987846683f29e31b907.js": "/velib/precache-manifest.f0d7b07abc51b987846683f29e31b907.js",
     "service-worker.js": "/velib/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/velib/static/css/2.266e55a5.chunk.css.map",
     "static/css/main.b35dedef.chunk.css.map": "/velib/static/css/main.b35dedef.chunk.css.map",
