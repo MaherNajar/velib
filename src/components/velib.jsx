@@ -151,7 +151,7 @@ export default class Velib extends Component {
                 <span style={this.countStyle}>{rangeMarkers}</span> marqueurs de
                 stations <VelibLogo width="70px" height="70px" /> sur{" "}
                 <span style={this.countStyle}>{maxMarkers}</span> vont
-                s'afficher sur la carte, faites glisser le vélo !
+                s'afficher sur la carte, faites deplacez le vélo !
               </h4>
               <Slider
                 onChange={this.onChangeMarkersRange}
