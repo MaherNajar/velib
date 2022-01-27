@@ -1,20 +1,18 @@
 {
   "files": {
-    "main.css": "/velib/static/css/main.afc256ea.chunk.css",
-    "main.js": "/velib/static/js/main.a413c278.chunk.js",
-    "main.js.map": "/velib/static/js/main.a413c278.chunk.js.map",
-    "runtime~main.js": "/velib/static/js/runtime~main.7a4e9bb8.js",
-    "runtime~main.js.map": "/velib/static/js/runtime~main.7a4e9bb8.js.map",
-    "static/css/2.266e55a5.chunk.css": "/velib/static/css/2.266e55a5.chunk.css",
-    "static/js/2.827bb9d7.chunk.js": "/velib/static/js/2.827bb9d7.chunk.js",
-    "static/js/2.827bb9d7.chunk.js.map": "/velib/static/js/2.827bb9d7.chunk.js.map",
-    "index.html": "/velib/index.html",
-    "precache-manifest.63d31edc4664ed30feee727bf24bf3c3.js": "/velib/precache-manifest.63d31edc4664ed30feee727bf24bf3c3.js",
-    "service-worker.js": "/velib/service-worker.js",
-    "static/css/2.266e55a5.chunk.css.map": "/velib/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.afc256ea.chunk.css.map": "/velib/static/css/main.afc256ea.chunk.css.map",
-    "static/media/bicycle.svg": "/velib/static/media/bicycle.4f7f60d5.svg",
-    "static/media/road.jpg": "/velib/static/media/road.5dd59a09.jpg",
-    "static/media/wheel_spin.mp3": "/velib/static/media/wheel_spin.917cf696.mp3"
-  }
+    "main.css": "/static/css/main.7ab29cbc.css",
+    "main.js": "/static/js/main.20ff2122.js",
+    "static/js/787.826e9637.chunk.js": "/static/js/787.826e9637.chunk.js",
+    "static/media/wheel_spin.mp3": "/static/media/wheel_spin.16add3f8c4be01c465fd.mp3",
+    "static/media/road.jpg": "/static/media/road.88ea54237ef1d6c97954.jpg",
+    "static/media/bicycle.svg": "/static/media/bicycle.f99c49b088cdeac5a080f68431c3f553.svg",
+    "index.html": "/index.html",
+    "main.7ab29cbc.css.map": "/static/css/main.7ab29cbc.css.map",
+    "main.20ff2122.js.map": "/static/js/main.20ff2122.js.map",
+    "787.826e9637.chunk.js.map": "/static/js/787.826e9637.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7ab29cbc.css",
+    "static/js/main.20ff2122.js"
+  ]
 }
