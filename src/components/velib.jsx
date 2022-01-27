@@ -1,74 +1,38 @@
-import React, { Component } from "react";
-import { Map, InfoWindow, Marker } from "google-maps-react";
-import { getStations } from "../services/velib-service";
-import TableInfo from "./tableInfo";
-import Slider from "./slider";
-import VelibLogo from "../icons/VelibLogo";
-import LoadingSpinner from "../icons/LoadingSpinner";
+import React, { Component } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { getStations } from '../services/velib-service';
+import TableInfo from './tableInfo';
+import Slider from './slider';
+import VelibLogo from '../icons/VelibLogo';
+import LoadingSpinner from '../icons/LoadingSpinner';
 
 export default class Velib extends Component {
   state = {
     maxMarkers: null,
-    rangeMarkers: 480,
+    rangeMarkers: 25,
     markers: [],
     filtredMarkers: [],
-    showingInfoWindow: false,
     activeMarker: null,
-    selectedPlace: { position: { lat: 48.8724200631, lng: 2.34839523628 } }
+    selectedPlace: { position: { lat: 48.8724200631, lng: 2.34839523628 } },
   };
 
   countStyle = {
-    fontSize: "30px"
+    fontSize: '30px',
   };
 
   async componentDidMount() {
     await this.getData();
-    await this.getFiltredMarkers();
+    this.getFiltredMarkers();
   }
 
   getData = async () => {
-    const { data } = await getStations();
-    const maxMarkers = data.nhits;
-
-    const markers = [];
-
-    data.records.forEach(e => {
-      if (e.hasOwnProperty("geometry")) {
-        var lat = e.geometry.coordinates[1];
-        var lng = e.geometry.coordinates[0];
-        var recordTime = new Date(e.record_timestamp).toLocaleDateString();
-        var {
-          station_code: codeStation,
-          station_name: nomStation,
-          station_state: etatStation,
-          nbedock: nbBornesTotal,
-          nbfreeedock: nbBornesDisponibles,
-          nbbike: nbVelosMecaniques,
-          nbebike: nbVelosElectriques,
-          creditcard: achatCB
-        } = e.fields;
-
-        markers.push({
-          codeStation,
-          nomStation,
-          position: { lat, lng },
-          etatStation,
-          nbBornesTotal,
-          nbBornesDisponibles,
-          nbVelosMecaniques,
-          nbVelosElectriques,
-          achatCB,
-          recordTime
-        });
-      }
-
-      this.setState({ markers, maxMarkers });
-    });
+    const { markers, maxMarkers } = await getStations();
+    this.setState({ markers, maxMarkers });
   };
 
-  onChangeMarkersRange = async rangeMarkers => {
-    await this.setState({ rangeMarkers });
-    await this.getFiltredMarkers();
+  onChangeMarkersRange = async (rangeMarkers) => {
+    this.setState({ rangeMarkers });
+    this.getFiltredMarkers();
   };
 
   getFiltredMarkers = () => {
@@ -77,97 +41,88 @@ export default class Velib extends Component {
     this.setState({ filtredMarkers });
   };
 
-  onMarkerClick = (props, marker, e) => {
-    const markerSource = this.state.markers.find(
-      m => m.codeStation === marker.uid
-    );
-    Object.assign(marker, markerSource);
+  onMarkerClick = (marker) => {
     this.setState({
       activeMarker: marker,
-      selectedPlace: props,
-      showingInfoWindow: true
     });
   };
 
-  onMapClicked = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
+  MapClicked = () => {
+    this.setState({
+      activeMarker: null,
+    });
   };
 
   render() {
-    const {
-      filtredMarkers,
-      maxMarkers,
-      activeMarker,
-      selectedPlace,
-      showingInfoWindow,
-      rangeMarkers
-    } = this.state;
-
-    const { google } = this.props;
+    const { filtredMarkers, maxMarkers, activeMarker, selectedPlace, rangeMarkers } =
+      this.state;
 
     return (
       <div className="row">
-        <div className="map col-md-4 col-sm-6 col-xs-12">
-          <Map
-            onClick={this.onMapClicked}
-            google={google}
-            zoom={12}
-            initialCenter={{
-              lat: selectedPlace.position.lat,
-              lng: selectedPlace.position.lng
-            }}
+        <div className="col-6">
+          <MapContainer
+            className="map"
+            center={[selectedPlace.position.lat, selectedPlace.position.lng]}
+            zoom={13}
+            scrollWheelZoom={false}
           >
-            {filtredMarkers.map(marker => (
+            {filtredMarkers.map((marker) => (
               <Marker
                 uid={marker.codeStation}
                 key={marker.codeStation}
                 name={marker.nomStation}
                 title={marker.nomStation}
                 position={marker.position}
-                onClick={this.onMarkerClick}
-                opacity={0.3}
-              />
+                opacity={0.7}
+                eventHandlers={{
+                  click: () => {
+                    this.onMarkerClick(marker);
+                  },
+                }}
+              >
+                <Popup>
+                  <div>
+                    <h6>{marker.nomStation}</h6>
+                  </div>
+                </Popup>
+              </Marker>
             ))}
 
-            <InfoWindow marker={activeMarker} visible={showingInfoWindow}>
-              <div>
-                <h6>{selectedPlace.name}</h6>
-              </div>
-            </InfoWindow>
-          </Map>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+          </MapContainer>
         </div>
-        <div id="infos" className="col text-center">
-          <div className="row">
-            <div className="col-md-12 mt-4">
-              <h4>
-                {filtredMarkers.length === 0 ? (
-                  <LoadingSpinner style={{ marginRight: "5px" }} />
-                ) : null}
-                <span style={this.countStyle}>{rangeMarkers}</span> marqueurs de
-                stations <VelibLogo width="70px" height="70px" /> sur{" "}
-                <span style={this.countStyle}>{maxMarkers}</span> vont
-                s'afficher sur la carte, faites deplacer le vélo !
-              </h4>
-              <Slider
-                onChange={this.onChangeMarkersRange}
-                maxMarkers={maxMarkers}
-                value={rangeMarkers}
-              />
-            </div>
-            <div className="col tableInfos">
-              {activeMarker ? (
-                <TableInfo activeMarker={activeMarker} />
-              ) : (
-                <h4 style={{ marginTop: "200px" }}>
-                  Cliquez sur un marqueur pour afficher les disponibilités en
-                  temps réel !
+        <div className="col">
+          <div id="infos" className="text-center">
+            <div className="row">
+              <div className="col-md-12 mt-4">
+                <h4>
+                  {filtredMarkers.length === 0 ? (
+                    <LoadingSpinner style={{ marginRight: '5px' }} />
+                  ) : null}
+                  <span style={this.countStyle}>{rangeMarkers}</span> marqueurs de
+                  stations <VelibLogo width="70px" height="70px" /> sur{' '}
+                  <span style={this.countStyle}>{maxMarkers}</span> vont s'afficher sur la
+                  carte, faites deplacer le vélo !
                 </h4>
-              )}
+                <Slider
+                  onChange={this.onChangeMarkersRange}
+                  maxMarkers={maxMarkers}
+                  value={rangeMarkers}
+                />
+              </div>
+              <div className="col tableInfos">
+                {activeMarker ? (
+                  <TableInfo activeMarker={activeMarker} />
+                ) : (
+                  <h4 style={{ marginTop: '200px' }}>
+                    Cliquez sur un marqueur pour afficher les disponibilités en temps réel
+                    !
+                  </h4>
+                )}
+              </div>
             </div>
           </div>
         </div>

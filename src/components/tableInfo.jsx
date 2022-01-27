@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const TableInfo = ({ activeMarker: a }) => {
   return (
@@ -25,20 +25,24 @@ const TableInfo = ({ activeMarker: a }) => {
             <span> Etat de la station</span>
           </th>
           <td>
-            <span
-              style={
-                a.etatStation === "Operative"
-                  ? { color: "green" }
-                  : { color: "red" }
-              }
-            >
-              {a.etatStation}
+            <span style={a.etatStation === 'OUI' ? { color: 'green' } : { color: 'red' }}>
+              <strong>{a.etatStation === 'OUI' ? 'OK' : 'KO'}</strong>
             </span>
           </td>
         </tr>
         <tr>
           <th>
-            <span> Nombre de bornes en station</span>
+            <span> Borne de paiement disponible</span>
+          </th>
+          <td>
+            <span style={a.achatCB === 'OUI' ? { color: 'green' } : { color: 'red' }}>
+              <strong> {a.achatCB.toLowerCase()}</strong>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span> Capacité de la station</span>
           </th>
           <td>
             <span>{a.nbBornesTotal}</span>
@@ -46,15 +50,7 @@ const TableInfo = ({ activeMarker: a }) => {
         </tr>
         <tr>
           <th>
-            <span> Nombre de bornes disponibles</span>
-          </th>
-          <td>
-            <span>{a.nbBornesDisponibles}</span>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <span> Nombre de vélos mécaniques</span>
+            <span> Vélos mécaniques disponibles</span>
           </th>
           <td>
             <span>{a.nbVelosMecaniques}</span>
@@ -62,7 +58,7 @@ const TableInfo = ({ activeMarker: a }) => {
         </tr>
         <tr>
           <th>
-            <span> Nombre de vélos électriques</span>
+            <span> Vélos électriques disponibles</span>
           </th>
           <td>
             <span>{a.nbVelosElectriques}</span>
@@ -70,14 +66,10 @@ const TableInfo = ({ activeMarker: a }) => {
         </tr>
         <tr>
           <th>
-            <span> Achat possible en station (CB)</span>
+            <span> Bornes disponibles</span>
           </th>
           <td>
-            <span
-              style={a.achatCB === "no" ? { color: "red" } : { color: "green" }}
-            >
-              {a.achatCB}
-            </span>
+            <span>{a.nbBornesDisponibles}</span>
           </td>
         </tr>
         <tr>
