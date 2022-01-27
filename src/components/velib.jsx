@@ -64,14 +64,10 @@ export default class Velib extends Component {
             className="map"
             center={[selectedPlace.position.lat, selectedPlace.position.lng]}
             zoom={13}
-            scrollWheelZoom={false}
           >
             {filtredMarkers.map((marker) => (
               <Marker
-                uid={marker.codeStation}
                 key={marker.codeStation}
-                name={marker.nomStation}
-                title={marker.nomStation}
                 position={marker.position}
                 opacity={0.7}
                 eventHandlers={{

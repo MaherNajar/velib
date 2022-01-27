@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import bicycle from "../icons/bicycle.svg";
-import wheelSpin from "../assets/wheel_spin.mp3";
-import styled from "styled-components";
-import road from "../assets/road.jpg";
+import React, { Component } from 'react';
+import bicycle from '../icons/bicycle.svg';
+import wheelSpin from '../assets/wheel_spin.mp3';
+import styled from 'styled-components';
+import road from '../assets/road.jpg';
 
 const sliderThumbStyles = ({ opacity }) => `
   width: 150px;
@@ -27,28 +27,28 @@ const Styles = styled.div`
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      ${props => sliderThumbStyles(props)}
+      ${(props) => sliderThumbStyles(props)}
     }
     &::-moz-range-thumb {
-      ${props => sliderThumbStyles(props)}
+      ${(props) => sliderThumbStyles(props)}
     }
   }
 `;
 
 export default class Slider extends Component {
   playAudio = () => {
-    document.getElementById("audio").play();
+    document.getElementById('audio').play();
   };
 
   stopAudio = () => {
-    document.getElementById("audio").pause();
+    document.getElementById('audio').pause();
   };
 
   render() {
     const { maxMarkers, value, onChange } = this.props;
     return (
       <React.Fragment>
-        <Styles opacity={value > 400 ? value / maxMarkers : 0.2}>
+        <Styles opacity={value > 400 ? value / maxMarkers : 0.5}>
           <input
             type="range"
             min={10}
@@ -58,7 +58,7 @@ export default class Slider extends Component {
             className="slider"
             onMouseDown={this.playAudio}
             onMouseUp={this.stopAudio}
-            onChange={e => onChange(e.target.value)}
+            onChange={(e) => onChange(e.target.value)}
           />
           <audio loop id="audio" src={wheelSpin} />
         </Styles>
