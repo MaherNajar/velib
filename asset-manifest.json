@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/velib/static/css/main.7ab29cbc.css",
-    "main.js": "/velib/static/js/main.f133f985.js",
+    "main.js": "/velib/static/js/main.d5535140.js",
     "static/js/787.826e9637.chunk.js": "/velib/static/js/787.826e9637.chunk.js",
     "static/media/wheel_spin.mp3": "/velib/static/media/wheel_spin.16add3f8c4be01c465fd.mp3",
     "static/media/road.jpg": "/velib/static/media/road.88ea54237ef1d6c97954.jpg",
     "static/media/bicycle.svg": "/velib/static/media/bicycle.f99c49b088cdeac5a080f68431c3f553.svg",
     "index.html": "/velib/index.html",
     "main.7ab29cbc.css.map": "/velib/static/css/main.7ab29cbc.css.map",
-    "main.f133f985.js.map": "/velib/static/js/main.f133f985.js.map",
+    "main.d5535140.js.map": "/velib/static/js/main.d5535140.js.map",
     "787.826e9637.chunk.js.map": "/velib/static/js/787.826e9637.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7ab29cbc.css",
-    "static/js/main.f133f985.js"
+    "static/js/main.d5535140.js"
   ]
 }
